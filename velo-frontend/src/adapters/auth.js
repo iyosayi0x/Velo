@@ -111,7 +111,6 @@ export const useRequestPasswordReset=()=>{
             const res = await fetch(`${REST_API_URL}/auth/password_reset/`, config)
             if(res.status === 200){
                 const data = await res.json()
-                storeRefesh(data.refresh)
                 return {
                     success:true,
                     data:data
