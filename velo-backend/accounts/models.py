@@ -51,7 +51,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
 class Profile(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='user')
     course = models.CharField(max_length=200)
-    university = models.CharField(max_length=200, required=False, null=True, blank=True)
+    university = models.CharField(max_length=200, null=True, blank=True)
     date_created= models.DateTimeField(auto_now_add=True)
 
 @receiver(post_save, sender=Account)
