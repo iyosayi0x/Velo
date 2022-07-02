@@ -5,13 +5,13 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class UserSerialzer(ModelSerializer):
+class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = "__all__"
 
 class ProfileSerialzer(ModelSerializer):
-    user = UserSerialzer()
+    user = UserSerializer()
     class Meta:
         model = Profile
         fields = '__all__'
