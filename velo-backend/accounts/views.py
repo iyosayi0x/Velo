@@ -9,6 +9,7 @@ from django.utils.http import urlsafe_base64_decode
 from .utils import generate_token, generate_password_reset_token, send_password_reset_mail
 from rest_framework import permissions
 from .models import Profile
+from .serializers import ProfileSerialzer
 
 User = get_user_model()
 
@@ -80,6 +81,16 @@ class SignUpView(APIView):
             }
             return Response(context, status=status.HTTP_200_OK)
 
+class RetriveProfileView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    def get(self, request):
+        user = request.user
+        try:
+            profile = Profile.objects.get(user=user)
+            serializer = ProfileSerialzer(profile)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Profile.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class PasswordResetView(APIView):
     permission_classes = (permissions.AllowAny,)
