@@ -2,7 +2,7 @@ import secure_svg from '../../assets/ilstrs/secure.svg'
 import {Link, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 import {useRequestPasswordReset} from '../../adapters/auth'
-import Message from '../../components/message'
+import Message from '../../components/Message'
 
 const PasswordReset=()=>{
     const [email , setEmail] = useState('')
