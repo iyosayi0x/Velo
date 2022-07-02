@@ -9,6 +9,20 @@ Start up velo frontend with
 ```bash
 cd velo-frontend
 npm install
+npm run dev
+```
+
+To build project
+
+```bash
+npm run build
+```
+
+To view preview of build
+
+```bash
+npm run preview
+
 ```
 
 ## Velo-backend
