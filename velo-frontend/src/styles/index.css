@@ -69,3 +69,10 @@ html {
     align-items: center;
     gap:2rem;
 }
+
+
+a {
+    text-decoration: none;
+    color:#003566;
+    font-weight: bolder;
+}

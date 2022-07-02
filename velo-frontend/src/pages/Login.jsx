@@ -48,6 +48,7 @@ const Login=()=>{
                         <input type='password' required={true} value={password} onChange={(e)=> setPassword(e.target.value)}/>
                     </div>
                     <div>
+                        <small className='my-5'>Forgot your password? <Link to='/password-reset'>Reset your password</Link></small>
                         <button className={isLoading ? 'auth__btn auth__btn--loading' : 'auth__btn'}>{isLoading ? 'Loading...' : 'Login'}</button>
                     </div>
                 </form>

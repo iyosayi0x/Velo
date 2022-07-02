@@ -93,3 +93,41 @@ export const useRequestEmailVerify=()=>{
     }
     return request_email_verify
 }
+
+
+export const useRequestPasswordReset=()=>{
+    const request_password_reset=async(email)=>{
+        const config= {
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+            },
+            body: JSON.stringify({email})
+        }
+
+        console.log(config)
+
+        try{
+            const res = await fetch(`${REST_API_URL}/auth/password_reset/`, config)
+            if(res.status === 200){
+                const data = await res.json()
+                storeRefesh(data.refresh)
+                return {
+                    success:true,
+                    data:data
+                }
+            }
+            return {
+                success:false,
+                data:null
+            }
+        }catch(err){
+            return {
+                succss:false,
+                data:null
+            }
+        }
+
+    }
+    return request_password_reset
+}

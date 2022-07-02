@@ -1,15 +1,33 @@
 import secure_svg from '../../assets/ilstrs/secure.svg'
 import {Link, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
+import {useRequestPasswordReset} from '../../adapters/auth'
+import Message from '../../components/message'
 
 const PasswordReset=()=>{
     const [email , setEmail] = useState('')
     const [isLoading, setIsLoading]= useState(false)
+    const [messages , setmessages] = useState([])
 
     const nav=useNavigate()
 
+    const request_password_reset= useRequestPasswordReset()
+
     const handleSubmit=async(e)=>{
         e.preventDefault()
+        if(isLoading){
+            return
+        }
+        if(email.trim() !== ''){
+            setIsLoading(true)
+            const res = await request_password_reset(email)
+            if(res.success){
+                setmessages(currmessags => [...currmessags, <Message type='success' Text={<div>Success! Check your mail for password reset instructions </div>}/>])
+                setIsLoading(false)
+            }
+            setIsLoading(false)
+            setmessages(currmessags => [...currmessags, <Message type='error' Text={<div>Unable to request password reset</div>}/>])
+        }
     }
 
     return (
@@ -33,7 +51,7 @@ const PasswordReset=()=>{
                         <button className={isLoading ? 'auth__btn auth__btn--loading' : 'auth__btn'}>{isLoading ? 'Loading...' : 'Reset Password'}</button>
                     </div>
                 </form>
-                <p  className='text-sm my-5'>Return back to login <Link to='/signup'>signup</Link></p>
+                <p  className='text-sm my-5'>Return back to login <Link to='/login'>Login</Link></p>
             </section>
         </main>
     )
