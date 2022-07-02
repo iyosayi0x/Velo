@@ -59,7 +59,9 @@ html {
     padding:.7rem .8rem;
     border-radius:.4rem;
 }
-
+.auth__btn--loading{
+    background:rgba(#003566,.5);
+}
 .auth__customNameField{
     display:flex;
     justify-content: center;
