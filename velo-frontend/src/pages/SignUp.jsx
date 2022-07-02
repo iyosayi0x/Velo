@@ -22,10 +22,10 @@ const SignUp=()=>{
     }
 
     const handleSubmit=async(e)=>{
+        e.preventDefault()
         if(isLoading){
             return
         }
-        e.preventDefault()
 
         if(notEmptyString(email) && notEmptyString(first_name) && notEmptyString(last_name) && notEmptyString(password) && notEmptyString(re_password)){
             setIsLoading(true)

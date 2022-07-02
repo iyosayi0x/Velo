@@ -78,3 +78,18 @@ export const useSignUp=()=>{
     }
     return signup
 }
+
+
+export const useEmailVerify=()=>{
+    const verify_mail=async(uidb64, token)=>{
+
+    }
+    return verify_mail
+}
+
+export const useRequestEmailVerify=()=>{
+    const request_email_verify=async(email)=>{
+
+    }
+    return request_email_verify
+}

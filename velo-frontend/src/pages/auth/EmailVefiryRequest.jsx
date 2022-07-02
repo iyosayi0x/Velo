@@ -1,25 +1,25 @@
-import welcome_svg from '../assets/ilstrs/welcome.svg'
+import secure_svg from '../../assets/ilstrs/secure.svg'
 import {Link, useNavigate} from 'react-router-dom'
-import {useLogin} from '../adapters/auth'
 import {useState} from 'react'
+import {useRequestEmailVerify} from '../../adapters/auth'
 
-const Login=()=>{
-    const login = useLogin()
+const PasswordReset=()=>{
     const [email , setEmail] = useState('')
-    const [password, setPassword] = useState('')
     const [isLoading, setIsLoading]= useState(false)
 
     const nav=useNavigate()
+    const request_email_verify = useRequestEmailVerify()
 
     const handleSubmit=async(e)=>{
         e.preventDefault()
         if(isLoading){
             return
         }
-        if(email.trim() !== '' && password.trim() !==''){
+        if(email.trim() !==''){
             setIsLoading(true)
-            const res = await login(email, password)
+            const res = await request_email_verify(email)
             if(res.success){
+                setIsLoading(false)
                 nav('/')
             }
             setIsLoading(false)
@@ -31,29 +31,25 @@ const Login=()=>{
 
             <section className='auth__ilstrWrapper'>
                 <div className='w-3/4'>
-                    <img src={welcome_svg} alt='Welcome'/>
+                    <img src={secure_svg} alt='Welcome'/>
                 </div>
             </section>
 
             <section className='auth__formWrapper'>
-                <h1 className='text-3xl'>Welcome back!</h1>
-                <small className='text-xs'>Login to your account</small>
+                <h1 className='text-3xl'>Verify your mail!</h1>
+                <small className='text-xs'>Request email verification</small>
                 <form className='auth__form' onSubmit={handleSubmit}>
                     <div className='my-4'>
                         <label htmlFor='email'>Email</label><br/>
                         <input type='email' required={true} value={email} onChange={(e)=> setEmail(e.target.value)}/>
                     </div>
-                    <div className='my-4'>
-                        <label htmlFor='password'>Password</label><br/>
-                        <input type='password' required={true} value={password} onChange={(e)=> setPassword(e.target.value)}/>
-                    </div>
                     <div>
-                        <button className={isLoading ? 'auth__btn auth__btn--loading' : 'auth__btn'}>{isLoading ? 'Loading...' : 'Login'}</button>
+                        <button className={isLoading ? 'auth__btn auth__btn--loading' : 'auth__btn'}>{isLoading ? 'Loading...' : 'Verify email'}</button>
                     </div>
                 </form>
-                <p  className='text-sm my-5'>Don't have an account? <Link to='/signup'>Signup</Link></p>
+                <p  className='text-sm my-5'>Return back to login <Link to='/signup'>signup</Link></p>
             </section>
         </main>
     )
 }
-export default Login
+export default PasswordReset
