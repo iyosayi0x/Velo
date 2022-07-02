@@ -41,3 +41,40 @@ const storeRefesh=(token)=>{
 const retrieveRefresh=()=>{
     return localStorage.getItem('__refresh')
 }
+
+
+export const useSignUp=()=>{
+    const signup=async(formData)=>{
+        const config= {
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+            },
+            body: JSON.stringify(formData)
+        }
+
+        console.log(config)
+
+        try{
+            const res = await fetch(`${REST_API_URL}/auth/signup/`, config)
+            if(res.status === 200){
+                const data = await res.json()
+                storeRefesh(data.refresh)
+                return {
+                    success:true,
+                    data:data
+                }
+            }
+            return {
+                success:false,
+                data:null
+            }
+        }catch(err){
+            return {
+                succss:false,
+                data:null
+            }
+        }
+    }
+    return signup
+}
