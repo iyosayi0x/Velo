@@ -27,7 +27,7 @@ const Login=()=>{
                         <button className='auth__btn'>Login</button>
                     </div>
                 </form>
-                <p  className='text-sm my-5'>Already have an account? <Link to='/signup'>Signup</Link></p>
+                <p  className='text-sm my-5'>Don't have an account? <Link to='/signup'>Signup</Link></p>
             </section>
         </main>
     )

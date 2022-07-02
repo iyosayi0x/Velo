@@ -1,4 +1,5 @@
 import welcome_svg from '../assets/ilstrs/welcome.svg'
+import {Link} from 'react-router-dom'
 
 const SignUp=()=>{
     return (
@@ -44,6 +45,7 @@ const SignUp=()=>{
                         <button className='auth__btn'>SignUp</button>
                     </div>
                 </form>
+                <p  className='text-sm my-5'>Already have an account? <Link to='/login'>Login</Link></p>
             </section>
         </main>
     )
