@@ -74,7 +74,7 @@ const SignUp=()=>{
                     </div>
                     <div className='my-4'>
                         <label htmlFor='re_password'>Confirm Password</label><br/>
-                        <input type='re_password' required={true} name='re_password' value={re_password} onChange={e=>handleFormChange(e)}/>
+                        <input type='password' required={true} name='re_password' value={re_password} onChange={e=>handleFormChange(e)}/>
                     </div>
                     <div>
                         <button className='auth__btn'>SignUp</button>

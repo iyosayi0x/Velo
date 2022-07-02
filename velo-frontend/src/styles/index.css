@@ -17,7 +17,7 @@ html {
 }
 
 .auth__main{
-    padding:3rem;
+    padding:4rem;
     display:flex;
     justify-content: space-around;
     align-items: center;
@@ -38,6 +38,7 @@ html {
     padding:.5rem .8rem;
     outline:none;
     border:none;
+    border-radius: .4rem;
 }
 
 .auth__ilstrWrapper{
