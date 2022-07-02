@@ -48,6 +48,12 @@ class Account(AbstractBaseUser, PermissionsMixin):
         return self.email_verified
 
 
+class Profile(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='user')
+    course = models.CharField(max_length=200)
+    university = models.CharField(max_length=200, required=False, null=True, blank=True)
+    date_created= models.DateTimeField(auto_now_add=True)
+
 @receiver(post_save, sender=Account)
 def user_created_handler(sender, instance, created, *args, **kwargs):
     if created:

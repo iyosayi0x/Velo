@@ -8,6 +8,7 @@ from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from .utils import generate_token, generate_password_reset_token, send_password_reset_mail
 from rest_framework import permissions
+from .models import Profile
 
 User = get_user_model()
 
@@ -41,10 +42,12 @@ class SignUpView(APIView):
         last_name = data.get('last_name', None)
         middle_name = data.get('last_name', None)
         password = data.get('password', None)
+        course = data.get('course', None)
+        university = data.get('university', None)
         re_password = data.get('password', None)
         email = data.get('email', None)
 
-        if first_name is None or last_name is None or password is None or re_password is None or email is None:
+        if first_name is None or last_name is None or course is None or password is None or re_password is None or email is None:
             context = {
                 "Invalid form data"
             }
@@ -66,10 +69,11 @@ class SignUpView(APIView):
             return Response(context, status=status.HTTP_400_BAD_REQUEST)
         except User.DoesNotExist:
             # if a user does not exist create one
-            User.objects.create(first_name=first_name,
+            user = User.objects.create(first_name=first_name,
                                 last_name=last_name,
                                 middle_name=middle_name,
                                 password=password, email=email)
+            Profile.objects.create(user=user, course=course, university=university)
             context = {
                 'success': True,
                 'description': 'Account Successfully created , proceed to login'
