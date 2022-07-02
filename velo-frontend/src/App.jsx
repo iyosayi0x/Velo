@@ -3,6 +3,7 @@ import SignUp from './pages/SignUp'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import NotFound from './pages/NotFound'
+import Chat from './pages/Chat'
 
 import {
   BrowserRouter,
@@ -19,7 +20,8 @@ const App =()=>{
         <Route path='/login' element={<Login/>}/>
         <Route path='/SignUp' element={<SignUp/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='*' element={<Dashboard/>}/>
+        <Route path='/chat' element={<Chat/>}/>
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
   )
