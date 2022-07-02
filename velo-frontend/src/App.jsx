@@ -13,11 +13,13 @@ import PasswordReset from './pages/auth/PasswordReset'
 import PasswordResetConfirm from './pages/auth/PasswordResetConfirm'
 import EmailVefiryRequest from "./pages/auth/EmailVefiryRequest";
 import EmailVerify from "./pages/auth/EmailVerify";
+import Navbar from "./components/Navbar";
 
 
 const App =()=>{
   return(
     <BrowserRouter>
+      <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>

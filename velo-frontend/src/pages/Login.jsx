@@ -9,9 +9,9 @@ const Login=()=>{
     const [password, setPassword] = useState('')
     const [isLoading, setIsLoading]= useState(false)
 
-    const nav=useNavigate()
+    const nav = useNavigate()
 
-    const handleSubmit=async(e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if(isLoading){
             return
