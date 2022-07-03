@@ -11,7 +11,6 @@ import PasswordReset from './pages/auth/PasswordReset'
 import PasswordResetConfirm from './pages/auth/PasswordResetConfirm'
 import EmailVefiryRequest from "./pages/auth/EmailVefiryRequest";
 import EmailVerify from "./pages/auth/EmailVerify";
-import Navbar from "./components/Navbar";
 import Feed from './pages/Feed'
 import FeedLayout from "./layouts/FeedLayout";
 import MessagesLayout from './layouts/MessagesLayout'
@@ -24,6 +23,7 @@ import Lessons from './pages/feed/Lessons'
 import Dashboard from './pages/feed/Dashboard'
 import { useSelector } from "react-redux";
 import {useGetMessages} from './adapters/chat'
+import Faq from "./pages/Faq";
 
 const App =()=>{
   const refresh = retrieveRefresh()
@@ -39,12 +39,12 @@ const App =()=>{
 
   return(
     <BrowserRouter>
-      <Navbar/>
       <Routes>
         <Route path='/' element={<MessagesLayout/>}>
             <Route index element={<Home/>}/>
             <Route path='login' element={<Login/>}/>
             <Route path='signup' element={<SignUp/>}/>
+            <Route path='faq' element={<Faq/>}/>
             <Route path='password-reset' element={<PasswordReset/>}/>
             <Route path='password-reset-confirm/:uidb64/:token/' element={<PasswordResetConfirm/>}/>
             <Route path='email-verify-request' element={<EmailVefiryRequest/>}/>

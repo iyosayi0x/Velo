@@ -6,6 +6,8 @@ import {notEmptyString} from '../utils'
 import {useDispatch} from 'react-redux'
 import {add_message} from '../store/messages'
 import {uid} from '../utils'
+import Navbar from '../components/Navbar' 
+import Footer from '../components/Footer'
 
 const SignUp=()=>{
     const dispatch = useDispatch()
@@ -48,13 +50,15 @@ const SignUp=()=>{
             }else{
                 dispatch(add_message({type:'error', text:res.data?.description, id:uid()}))
             }
-        }
+        } 
     }
 
     return (
-        <main className='auth__main'>
+        <div>
+        <Navbar/>
+        <main className='px-8 justify-around items-center bg-[#f9f9f9] rounded-md w-[90%] mx-auto my-20 py-10 md:auth__main mb-20'>
 
-            <section className='auth__ilstrWrapper'>
+            <section className='hidden md:block auth__ilstrWrapper'>
                 <div className='w-3/4'>
                     <img src={welcome_svg} alt='Welcome'/>
                 </div>
@@ -64,7 +68,7 @@ const SignUp=()=>{
                 <h1 className='text-3xl'>Welcome to Velo!</h1>
                 <small className='text-xs'>Create an account</small>
                 <form className='auth__form' onSubmit={handleSubmit}>
-                    <div className='auth__customNameField'>
+                    <div className='md:auth__customNameField'>
                         <div className='my-4'>
                             <label htmlFor='first_name'>First Name</label><br/>
                             <input type='first_name' required={true} name='first_name' value={first_name} onChange={e=>handleFormChange(e)}/>
@@ -97,6 +101,8 @@ const SignUp=()=>{
                 <p  className='text-sm my-5'>Already have an account? <Link to='/login'>Login</Link></p>
             </section>
         </main>
+        <Footer/>
+        </div>
     )
 }
 export default SignUp

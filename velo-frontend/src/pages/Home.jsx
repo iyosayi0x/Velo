@@ -4,10 +4,13 @@ import chat from '../images/chat.png'
 import ask from '../images/ask.png'
 import select from '../images/select.png'
 import social from '../images/social.png'
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 const Home=()=>{
     return (
        <div>
+       <Navbar />
         <div className="bg-[#f5f5f5] px-5 md:px-7 py-10 md:py-14 md:grid grid-cols-2 gap-4 md:min-h-[50vh]">
             <div className='md:py-20'>
                 <h1 className="my-4 text-4xl font-semibold text-[#001d3d]">A Social media platform for <span className="font-bold text-[#1363DF]">University Students</span></h1>
@@ -81,6 +84,7 @@ const Home=()=>{
                 </div>
             </div>
         </div>
+        <Footer/>
        </div>
     )
 }

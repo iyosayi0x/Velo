@@ -10,12 +10,10 @@
 }
 
 .feedlayout {
-    height:75vh;
+    height:100vh;
 }
 
 .feedlayout__navbar{
-    border-right: 3px solid #f9f9f9;
-    height: 100%;
     padding:3rem;
     flex:.1;
 }

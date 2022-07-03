@@ -3,6 +3,8 @@ import {Link, useNavigate} from 'react-router-dom'
 import {useLogin} from '../adapters/auth'
 import {useState} from 'react'
 import {notEmptyString} from '../utils'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const Login=()=>{
     const login = useLogin()
@@ -28,15 +30,16 @@ const Login=()=>{
     }
 
     return (
-        <main className='auth__main'>
-
-            <section className='auth__ilstrWrapper'>
+        <div>
+        <Navbar />
+        <main className='px-9 justify-around items-center bg-[#f9f9f9] rounded-md w-[90%] mx-auto my-20 py-10 md:auth__main mb-20'>
+            <section className='hidden md:block auth__ilstrWrapper'>
                 <div className='w-3/4'>
                     <img src={welcome_svg} alt='Welcome'/>
                 </div>
             </section>
 
-            <section className='auth__formWrapper'>
+            <section className='md:auth__formWrapper'>
                 <h1 className='text-3xl'>Welcome back!</h1>
                 <small className='text-xs'>Login to your account</small>
                 <form className='auth__form' onSubmit={handleSubmit}>
@@ -56,6 +59,8 @@ const Login=()=>{
                 <p  className='text-sm my-5'>Don't have an account? <Link to='/signup'>Signup</Link></p>
             </section>
         </main>
+        <Footer/>
+        </div>
     )
 }
 export default Login

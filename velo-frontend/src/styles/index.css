@@ -12,12 +12,15 @@ Color pallet
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, label{
+h1, h2, h3, h4, h6, label{
     font-family: 'Montserrat', sans-serif;
 }
 
-p, a, button, input, select, option {
+p, a, button, input, select, h5, option {
     font-family: 'DM Sans', sans-serif;
+}
+li{
+    list-style: none;
 }
 p{
     color: #333;
