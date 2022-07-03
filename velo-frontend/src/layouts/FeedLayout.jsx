@@ -11,6 +11,7 @@ const FeedLayout=()=>{
                     <li className='feedlayour__navItem'><Link to='/feed/lessons'>Lessons</Link></li>
                     <li className='feedlayour__navItem'><Link to='/feed/chat'>Chats</Link></li>
                     <li className='feedlayour__navItem'><Link to='/feed/users'>Users</Link></li>
+                    <li className='feedlayour__navItem'><Link to='/feed/new'>New</Link></li>
                     <li className='feedlayour__navItem'><Link to='/feed/dashboard'>Dashboard</Link></li>
                 </ul>
             </section>
