@@ -5,6 +5,7 @@ const initialState = {
     last_name:null,
     middle_name:null,
     is_authenticated:false,
+    email_verified:null,
     email:null,
     __auth:null
 }
@@ -14,13 +15,14 @@ export const counterSlice = createSlice({
     initialState,
     reducers: {
         login: (state, payload) => {
-            const {__auth, first_name, last_name, middle_name, email} = payload
+            const {__auth, first_name, last_name, middle_name, email, email_verified} = payload
             state.__auth=__auth
             state.first_name = first_name
             state.last_name = last_name
             state.middle_name = middle_name
             state.email = email
             state.is_authenticated = true
+            state.email_verified = email_verified
         },
         logout: (state) => {
             state.email=null
@@ -28,6 +30,7 @@ export const counterSlice = createSlice({
             state.last_name=null
             state.is_authenticated=false
             state.middle_name=null
+            state.email_verified = null
             state.__auth=null
         }
     },

@@ -1,6 +1,7 @@
 const Chat=()=>{
     return (
-        <div>Welcome to the chat page</div>
+        <div>Chat page</div>
     )
 }
+
 export default Chat
