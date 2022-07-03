@@ -58,4 +58,4 @@ class Profile(models.Model):
 def user_created_handler(sender, instance, created, *args, **kwargs):
     if created:
         send_activation_mail(instance)
-        Profile.objects.cre3ate(user=instance)
+        Profile.objects.create(user=instance)

@@ -32,6 +32,7 @@ const SignUp=()=>{
             setIsLoading(true)
             const res = await signup(formData)
             if(res.success){
+                setIsLoading(false)
                 nav('/')
             }
             setIsLoading(false)
@@ -78,7 +79,7 @@ const SignUp=()=>{
                         <input type='password' required={true} name='re_password' value={re_password} onChange={e=>handleFormChange(e)}/>
                     </div>
                     <div>
-                        <button className='auth__btn'>SignUp</button>
+                    <button className={isLoading ? 'auth__btn auth__btn--loading' : 'auth__btn'}>{isLoading ? 'Loading...' : 'Signup'}</button>
                     </div>
                 </form>
                 <p  className='text-sm my-5'>Already have an account? <Link to='/login'>Login</Link></p>

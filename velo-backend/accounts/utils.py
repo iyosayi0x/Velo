@@ -20,11 +20,15 @@ generate_token = EmailActivateTokenGenerator()
 
 class EmailThread(threading.Thread):
     def __init__(self, email):
-        self.email = email
         threading.Thread.__init__(self)
+        self.email = email
+
 
     def run(self):
-        self.email.send()
+        try:
+            self.email.send()
+        except Exception as E:
+            print(E)
 
 
 def send_activation_mail(user):
