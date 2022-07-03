@@ -21,7 +21,7 @@ generate_token = EmailActivateTokenGenerator()
 class EmailThread(threading.Thread):
     def __init__(self, email):
         self.email = email
-        threading.Thread__init__(self)
+        threading.Thread.__init__(self)
 
     def run(self):
         self.email.send()

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import BaseUserManager
 
 class AccountManager(BaseUserManager):
-    def create_user(self , email , first_name, last_name, middle_name , password=None):
+    def create_user(self , email , first_name, last_name, middle_name='' , password=None):
 
         if not email:
             raise ValueError("Email is required")
@@ -23,13 +23,13 @@ class AccountManager(BaseUserManager):
         user.save()
         return user
 
-    def create_staffuser(self , email , first_name, last_name, middle_name , password=None):
+    def create_staffuser(self , email , first_name, last_name, middle_name='', password=None):
         user = self.create_user(email=email , first_name=first_name, last_name=last_name, middle_name=middle_name , password=password)
         user.staff = True
         user.save(using=self._db)
         return user
 
-    def create_superuser(self , email , first_name, last_name, middle_name , password=None):
+    def create_superuser(self , email , first_name, last_name, middle_name='', password=None):
         user = self.create_user(email=email , first_name=first_name, last_name=last_name, middle_name=middle_name , password=password)
         user.superuser = True
         user.admin = True
