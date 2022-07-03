@@ -67,11 +67,13 @@ class SignUpView(APIView):
 
         except User.DoesNotExist:
             # if a user does not exist create one
-            User.objects.create(first_name=first_name,
+            user = User(first_name=first_name,
                                 last_name=last_name,
                                 middle_name=middle_name,
-                                password=password,
                                 email=email)
+            user.set_password(password)
+            user.save()
+
             context = {
                 'success': True,
                 'description': 'Account Successfully created , proceed to login'

@@ -52,7 +52,13 @@ class Profile(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='user')
     major = models.CharField(max_length=200, null=True, blank=True)
     intrests = models.CharField(max_length=200, null=True, blank=True)
+    about = models.TextField(null=True, blank=True)
+    username = models.CharField(max_length=50, default='')
     date_created= models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        self.username = f'{self.user.first_name}#00{self.user.id}'
+        super(Profile , self).save(*args,**kwargs)
 
 @receiver(post_save, sender=Account)
 def user_created_handler(sender, instance, created, *args, **kwargs):
