@@ -50,6 +50,7 @@ const App =()=>{
             <Route path='password-reset-confirm/:uidb64/:token/' element={<PasswordResetConfirm/>}/>
             <Route path='email-verify-request' element={<EmailVefiryRequest/>}/>
             <Route path='email-verify/:uidb64/token/' element={<EmailVerify/>}/>
+            <Route path='new' element={<NewQuestion/>}/>
             <Route path='feed' element={<FeedLayout/>}>
                 <Route index element={<Feed/>}/>
                 <Route path='lessons' element={<Lessons/>}/>
