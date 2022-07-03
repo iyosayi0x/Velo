@@ -14,7 +14,7 @@ import PasswordResetConfirm from './pages/auth/PasswordResetConfirm'
 import EmailVefiryRequest from "./pages/auth/EmailVefiryRequest";
 import EmailVerify from "./pages/auth/EmailVerify";
 import Navbar from "./components/Navbar";
-
+import Feed from './pages/Feed'
 
 const App =()=>{
   return(
@@ -29,6 +29,7 @@ const App =()=>{
         <Route path='/email-verify-request' element={<EmailVefiryRequest/>}/>
         <Route path='/email-verify/:uidb64/token/' element={<EmailVerify/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/feed' element={<Feed/>}/>
         <Route path='/chat' element={<Chat/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>

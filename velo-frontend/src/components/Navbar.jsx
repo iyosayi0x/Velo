@@ -17,7 +17,7 @@ const Navbar = ({href}) => {
                         <a className='hover:cursor-pointer' href={href}>FAQ</a>
                     </li>
                     <li>
-                        <Link to="/">Feed</Link>
+                        <Link to="/feed">Feed</Link>
                     </li>
                 </ul>
             </div>
@@ -26,7 +26,7 @@ const Navbar = ({href}) => {
                 <Link to="/signup"><button className='w-40 md:w-44 py-3 -mt-2 rounded-md border border-[#003566] hover:bg-[#003566] duration-500 hover:text-white text-[#003566] font-bold'>Signup</button></Link>
             </div>
         </div>
-    
+
     </div>
   )
 }
