@@ -15,7 +15,6 @@ export const counterSlice = createSlice({
     initialState,
     reducers: {
         login: (state, payload) => {
-            console.log(payload)
             state.__auth=payload.__auth
             state.first_name = payload.first_name
             state.last_name = payload.last_name

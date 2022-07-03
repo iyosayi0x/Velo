@@ -23,10 +23,12 @@ import Chat from './pages/feed/Chat'
 import Lessons from './pages/feed/Lessons'
 import Dashboard from './pages/feed/Dashboard'
 import { useSelector } from "react-redux";
+import {useGetMessages} from './adapters/chat'
 
 const App =()=>{
   const refresh = retrieveRefresh()
-  const is_authenticated = useSelector((state)=>state.user.is_authenticated)
+  const get_messages = useGetMessages()
+  const is_authenticated = useSelector(state=>state.user.is_authenticated)
   const token_refesh = useTokenRefresh()
 
   useEffect(()=>{
@@ -34,6 +36,12 @@ const App =()=>{
       token_refesh(refresh)
     }
   },[])
+
+  useEffect(()=>{
+    if(is_authenticated){
+      get_messages()
+    }
+  },[is_authenticated])
 
   return(
     <BrowserRouter>

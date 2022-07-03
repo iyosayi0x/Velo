@@ -21,7 +21,7 @@ const Login=()=>{
             setIsLoading(true)
             const res = await login(email, password)
             if(res.success){
-                nav('/')
+                nav('/feed')
             }
             setIsLoading(false)
         }
