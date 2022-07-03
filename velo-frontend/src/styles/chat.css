@@ -3,17 +3,14 @@
 @tailwind utilities;
 
 .chat__chatHeader{
-    background:#f9f9f9;
     padding:1rem;
     border-radius:.8rem;
-    box-shadow: 2px 1px 5px #e1e1e1;
 }
 .chat__chatHeader input {
     padding:.6rem 1rem;
     border-radius: .7rem;
     outline:none;
     margin:1rem auto;
-    box-shadow: 2px 1px 5px #e1e1e1;
 }
 .chat__chatHeader h1 {
     font-weight: bolder;
@@ -23,15 +20,13 @@
     display:flex;
     justify-content:space-between;
     align-items: flex-start;
-    gap:1rem;
+    gap:.7rem;
     width:100%;
 }
 .chat__msgCont {
-    background:#f9f9f9;
     height:100%;
-    padding:1rem;
+    padding:0;
     border-radius:.8rem;
-    box-shadow: 2px 1px 5px #e1e1e1;
     flex:.8;
 }
 
@@ -39,10 +34,8 @@
     flex:.2;
 }
 .chat__chats{
-    background:#f9f9f9;
     padding:1rem;
     border-radius:.8rem;
-    box-shadow: 2px 1px 5px #e1e1e1;
     margin:1rem auto;
     max-height: 100%;
     overflow-y: auto;

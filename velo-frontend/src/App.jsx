@@ -24,7 +24,6 @@ import Lessons from './pages/feed/Lessons'
 import Dashboard from './pages/feed/Dashboard'
 import { useSelector } from "react-redux";
 import {useGetMessages} from './adapters/chat'
-import NewQuestion from "./components/newQuestion";
 
 const App =()=>{
   const refresh = retrieveRefresh()
@@ -50,14 +49,12 @@ const App =()=>{
             <Route path='password-reset-confirm/:uidb64/:token/' element={<PasswordResetConfirm/>}/>
             <Route path='email-verify-request' element={<EmailVefiryRequest/>}/>
             <Route path='email-verify/:uidb64/token/' element={<EmailVerify/>}/>
-            <Route path='new' element={<NewQuestion/>}/>
             <Route path='feed' element={<FeedLayout/>}>
                 <Route index element={<Feed/>}/>
                 <Route path='lessons' element={<Lessons/>}/>
                 <Route path='chat' element={<Chat/>}/>
                 <Route path='users' element={<Users/>}/>
                 <Route path='dashboard' element={<Dashboard/>}/>
-                <Route path='new' element={<NewQuestion/>}/>
             </Route>
         </Route>
 
