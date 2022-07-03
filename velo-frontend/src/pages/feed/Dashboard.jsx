@@ -1,4 +1,4 @@
-import React, { useState, useMemo , useDeferredValue} from "react"
+import React, { useState} from "react"
 import placeholder_image from "../../assets/images/valley_landscape.png"
 import UserDisplay from "../../components/UserDisplay"
 import Questions from "../../components/Questions"
@@ -9,11 +9,11 @@ import "../../styles/question.css"
 const Dashboard=()=>{
     const user = useSelector(state => state.user)
     const [question, setNewQuestion] = useState(false)
+    const [modalShowing, setModalShowing] = useState(false)
     let profileImage;
     let firstName = "Divine" // import first name here
     let lastName = "Edeh" // import last name here
     let id = "divine" // import id i.e username here
-    let nav = useNavigate()
     const newQuestionHandler = () => {
         setNewQuestion(true)
     }
