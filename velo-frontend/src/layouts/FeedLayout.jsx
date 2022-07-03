@@ -5,7 +5,6 @@ import '../styles/feed.css'
 const FeedLayout=()=>{
     return (
         <main className='flex justify-between feedlayout'>
-
             <section className='feedlayout__navbar'>
                 <ul>
                     <li className='feedlayour__navItem'><Link to='/feed'>Feed</Link></li>
