@@ -3,14 +3,17 @@ import {Link, useNavigate, useParams} from 'react-router-dom'
 import {useState} from 'react'
 import Message from '../../components/Message'
 import {notEmptyString} from '../../utils'
+import {add_message} from '../../store/messages'
+import {useDispatch} from 'react-redux'
+import {uid} from '../../utils'
 
 const PasswordResetConfirm=()=>{
     const [passwordData, setPasswordData] = useState({
         password:'',
         re_password:''
     })
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading]= useState(false)
-    const [messages, setMessages] = useState([])
 
     const nav=useNavigate()
     const params = useParams()
@@ -27,11 +30,15 @@ const PasswordResetConfirm=()=>{
             return
         }
         if(params.uidb64 && params.token && notEmptyString(password) && notEmptyString(re_password)){
+            setIsLoading(true)
             const res = await confirm_password_reset(params.uidb64 , params.token, passwordData)
             if(res.success){
-                setMessages(currMessages => [...currMessages , <Message type='success' text={<div>Password reset successful <Link to='/login'>Login</Link></div>}/>])
+                dispatch(add_message({type:'success', text:<div>Password reset successful <Link to='/login'>Login</Link></div>, id:uid()}))
+                setIsLoading(false)
+                nav('/login')
             }
-            setMessages(currMessages => [...currMessages , <Message type='success' text={<div>Password reset failed <Link to='/password-reset-request'>try again</Link></div>}/>])
+            dispatch(add_message({type:'error', text:<div>Password reset failed <Link to='/password-reset-request'>try again</Link></div>, id:uid()}))
+            setIsLoading(false)
         }
     }
 

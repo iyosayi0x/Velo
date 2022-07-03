@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.message {
+    padding:.7rem;
+    background:#f9f9f9;
+    width: fit-content;
+    min-width: 300px;
+    border-radius: .3rem;
+    margin:.7rem auto;
+}
+
+.messages__wrapper {
+    position:fixed;
+    bottom:4rem;
+    right:2rem;
+}
+
+.message--success {
+    background:#06d6a0;
+    color:white;
+}
+.message--error {
+    background:#ff595e;
+    color:white;
+}
