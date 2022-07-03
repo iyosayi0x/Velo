@@ -19,6 +19,7 @@ const PasswordResetConfirm=()=>{
     const handlePasswordChange=(e)=>{
         setPasswordData(currPassword => ({...currPassword, [e.target.name]:e.target.value}))
     }
+
     const handleSubmit=async(e)=>{
         e.preventDefault()
         if(isLoading){

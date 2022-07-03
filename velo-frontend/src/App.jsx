@@ -23,7 +23,7 @@ const App =()=>{
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/password-reset' element={<PasswordReset/>}/>
-        <Route path='/password-reset-confirm/:uidb64/token/' element={<PasswordResetConfirm/>}/>
+        <Route path='/password-reset-confirm/:uidb64/:token/' element={<PasswordResetConfirm/>}/>
         <Route path='/email-verify-request' element={<EmailVefiryRequest/>}/>
         <Route path='/email-verify/:uidb64/token/' element={<EmailVerify/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
