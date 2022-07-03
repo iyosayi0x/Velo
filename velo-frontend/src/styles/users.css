@@ -1,4 +1,4 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -13,7 +13,7 @@
     margin:1rem auto;
 }
 
-.users h1 {
+.users .users__headertext{
     font-weight: bolder;
     font-size:2rem;
 }
@@ -50,4 +50,4 @@
     font-size: 1.2rem;
     font-weight: bolder;
     margin-inline:1rem;
-} */
+}
