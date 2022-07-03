@@ -31,6 +31,7 @@ const Dashboard=()=>{
     function handleClicked(value) {
         setTab(value)
     }
+
     return (
         <div>
             <div>
@@ -40,27 +41,9 @@ const Dashboard=()=>{
                 <div>
                     <div className="flex space-x-6 py-4 font-medium">
                         <h1>Questions</h1>
-                        {/* {
-                            details.map((item) => {
-                                return <h1 key={item.id} className={`${item.id === tab ? "active" : ""} hover:cursor-pointer text-[#001d3d]`} onClick={() => {
-                                    handleClicked(item.id)
-                                    }}>
-                                    {item.name}
-                                </h1>
-                            })
-                        } */}
                     </div>
                     <div className="mx-7 md:mx-36">
                         <Questions firstName={firstName} id={id} lastName={lastName} profile_image={profileImage || placeholder_image}/>
-                        {/* {
-                            tab === 1 ?
-                            <div>
-                                <Questions profile_image={placeholder_image}/>
-                            </div>
-                                : <div>
-                                    <Answers/>
-                                </div>
-                        } */}
                     </div>
                 </div>
                 <div onClick={newQuestion}>
