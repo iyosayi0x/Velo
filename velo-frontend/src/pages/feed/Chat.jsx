@@ -10,7 +10,6 @@ const Chat=()=>{
     function send(message) {
         return <IncomingChat message={message} />
     }
-    console.log(message);
     return(
         <section className='chat p-5'>
             <div className='chat__msgCont relative'>

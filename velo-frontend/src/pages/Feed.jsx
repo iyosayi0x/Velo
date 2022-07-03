@@ -10,7 +10,7 @@ const Feed= () => {
             <h1 className="py-4 font-semibold text-lg">Questions from students all over Africa...</h1>
             {
                 posts.map(post => {
-                    return <Questions firstName={post.firstName} lastName={post.lastName} id={`${post.id}`} profile_image={post.image || defaultImg} />
+                    return <Questions firstName={post.firstName} lastName={post.lastName} key={post.id} id={`${post.id}`} profile_image={post.image || defaultImg} />
                 })
             }
         </div>
