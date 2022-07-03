@@ -7,7 +7,6 @@ export const useGetMessages=()=>{
 
 
     const get_messages=async(token)=>{
-        console.log('this was called')
         const Authorization = `Bearer ${token}`
         const config= {
             method:"GET",

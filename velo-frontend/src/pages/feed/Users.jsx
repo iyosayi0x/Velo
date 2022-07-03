@@ -23,7 +23,7 @@ const Users=()=>{
         }
     }, [searchText]);
     let chat = () => {
-        
+
     }
     // const query = useSelector(state => state.users.all)
     // const [search , setSearch] = useState('')
@@ -60,7 +60,7 @@ const Users=()=>{
 
             {/* <div className='users__wrapper'>
                 {
-                    users.map(user => <UserDisplay first_name={user.user.first_name} last_name={user.user.last_name} key={user.id} id={user.user.id} callback={callback}/>)
+                    users.map(user => <UserDisplay first_name={user.user.first_name} last_name={user.user.last_name} key={user.id} id={user.user.id} country={user.country} username={`@${user.username}`} callback={callback}/>)
                 }
             </div> */}
 
