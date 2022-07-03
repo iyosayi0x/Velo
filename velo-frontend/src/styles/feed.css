@@ -21,6 +21,6 @@
 }
 
 .feedlayout__main{
-    padding:1rem;
-    flex:.9;
+    padding:0;
+    flex:1;
 }
