@@ -12,7 +12,7 @@ Color pallet
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, label{
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -78,7 +78,6 @@ img {
     align-items: center;
     gap:2rem;
 }
-
 
 a {
     text-decoration: none;
