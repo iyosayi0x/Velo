@@ -2,9 +2,13 @@ import {REST_API_URL} from './index'
 import {decode_jwt} from '../utils'
 import { useDispatch } from 'react-redux'
 import { login as login_action } from '../store/user'
+import {useGetMessages} from './chat'
+import { useGetUsers } from './users'
 
 export const useLogin=()=>{
     const dispatch = useDispatch()
+    const get_messages = useGetMessages()
+    const get_users = useGetUsers()
     const login=async(email , password)=>{
         const config= {
             method:"POST",
@@ -22,6 +26,8 @@ export const useLogin=()=>{
 
                 storeRefesh(data.refresh)
                 dispatch(login_action(payload))
+                get_messages(data.access)
+                get_users(data.access)
 
                 return {
                     success:true,
@@ -96,6 +102,8 @@ export const useRequestEmailVerify=()=>{
 
 export const useTokenRefresh=()=>{
     const dispatch = useDispatch()
+    const get_messages = useGetMessages()
+    const get_users = useGetUsers()
 
     const token_refesh=async(refresh)=>{
             const config= {
@@ -113,6 +121,8 @@ export const useTokenRefresh=()=>{
                     const {first_name, last_name, middle_name, email, email_verified,} = decode_jwt(data.access)
                     const payload = {first_name , last_name , middle_name , email , email_verified, access:data.access}
                     dispatch(login_action(payload))
+                    get_messages(data.access)
+                    get_users(data.access)
                     return {
                         success:true,
                         data:data

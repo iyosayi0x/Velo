@@ -1,25 +1,24 @@
-import {useDispatch} from 'react-redux'
-import {update_messages} from '../store/chat'
 import {REST_API_URL} from './index'
+import {useDispatch} from 'react-redux'
+import {update_users} from '../store/users'
 
-export const useGetMessages=()=>{
+export const useGetUsers=()=>{
     const dispatch = useDispatch()
-
-
-    const get_messages=async(token)=>{
-        console.log('this was called')
+    const get_users=async(token)=>{
         const Authorization = `Bearer ${token}`
         const config= {
             method:"GET",
             headers:{
+                "Content-type":"application/json",
                 Authorization
-            },
+            }
         }
+
         try{
-            const res = await fetch(`${REST_API_URL}/chat/retrieve-messages/`, config)
+            const res = await fetch(`${REST_API_URL}/auth/retrieve-users/`, config)
             if(res.status === 200){
                 const data = await res.json()
-                dispatch(update_messages(data))
+                dispatch(update_users(data))
                 return {
                     success:true,
                     data:data
@@ -36,5 +35,5 @@ export const useGetMessages=()=>{
             }
         }
     }
-    return get_messages
+    return get_users
 }
