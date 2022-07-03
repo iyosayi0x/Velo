@@ -17,9 +17,10 @@ export const useLogin=()=>{
             const res = await fetch(`${REST_API_URL}/auth/token/`, config)
             if(res.status === 200){
                 const data = await res.json()
-                storeRefesh(data.refresh)
                 const {first_name, last_name, middle_name, email, email_verified,} = decode_jwt(data.access)
-                const payload = {first_name , last_name , middle_name , email , email_verified}
+                const payload = {first_name , last_name , middle_name , email , email_verified, access:data.access}
+
+                storeRefesh(data.refresh)
                 dispatch(login_action(payload))
 
                 return {
@@ -109,7 +110,7 @@ export const useTokenRefresh=()=>{
                     const data = await res.json()
                     storeRefesh(data.refresh)
                     const {first_name, last_name, middle_name, email, email_verified,} = decode_jwt(data.access)
-                    const payload = {first_name , last_name , middle_name , email , email_verified}
+                    const payload = {first_name , last_name , middle_name , email , email_verified, access:data.access}
                     dispatch(login_action(payload))
                     return {
                         success:true,

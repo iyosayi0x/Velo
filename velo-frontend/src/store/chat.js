@@ -7,17 +7,17 @@ const initialState = {
 }
 
 
-export const counterSlice = createSlice({
+export const chatSlice = createSlice({
     name: 'messages',
     initialState:initialState,
     reducers: {
-        update_messages:(state, payload)=>{
-            state.chats = payload
+        update_messages:(state, action)=>{
+            state.chats = action.payload
         }
 
     },
 })
 
-export const { update_messages } = counterSlice.actions
+export const { update_messages } = chatSlice.actions
 
-export default counterSlice.reducer
+export default chatSlice.reducer

@@ -5,6 +5,7 @@ export const useGetMessages=()=>{
     const dispatch = useDispatch()
     const token = useSelector(state => state.user.__auth)
     const get_messages=async()=>{
+        console.log('this was called')
         const Authorization = `Bearer ${token}`
         const config= {
             method:"GET",

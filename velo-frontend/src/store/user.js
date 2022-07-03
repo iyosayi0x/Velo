@@ -10,18 +10,19 @@ const initialState = {
     __auth:null
 }
 
-export const counterSlice = createSlice({
+export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        login: (state, payload) => {
-            state.__auth=payload.__auth
-            state.first_name = payload.first_name
-            state.last_name = payload.last_name
-            state.middle_name = payload.middle_name
-            state.email = payload.email
+        login: (state, action) => {
+            const {first_name , last_name , middle_name , email , email_verified, access} = action.payload
+            state.__auth= access
+            state.first_name =  first_name
+            state.last_name =  last_name
+            state.middle_name =  middle_name
+            state.email =  email
             state.is_authenticated = true
-            state.email_verified = payload.email_verified
+            state.email_verified =  email_verified
         },
         logout: (state) => {
             state.email=null
@@ -36,6 +37,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { login, logout } = counterSlice.actions
+export const { login, logout } = userSlice.actions
 
-export default counterSlice.reducer
+export default userSlice.reducer
