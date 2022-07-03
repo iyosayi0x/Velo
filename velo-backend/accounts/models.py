@@ -54,6 +54,7 @@ class Profile(models.Model):
     intrests = models.CharField(max_length=200, null=True, blank=True)
     about = models.TextField(null=True, blank=True)
     username = models.CharField(max_length=50, default='')
+    country = models.CharField(default='uknown', max_length=200)
     date_created= models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):

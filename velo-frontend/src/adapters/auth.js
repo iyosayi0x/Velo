@@ -1,13 +1,15 @@
 import {REST_API_URL} from './index'
 import {decode_jwt} from '../utils'
 import { useDispatch } from 'react-redux'
-import { login as login_action } from '../store/user'
+import { login as login_action, setprofile } from '../store/user'
 import {useGetMessages} from './chat'
 import { useGetUsers } from './users'
+
 
 export const useLogin=()=>{
     const dispatch = useDispatch()
     const get_messages = useGetMessages()
+    const get_profile = useGetProfile()
     const get_users = useGetUsers()
     const login=async(email , password)=>{
         const config= {
@@ -27,6 +29,7 @@ export const useLogin=()=>{
                 storeRefesh(data.refresh)
                 dispatch(login_action(payload))
                 get_messages(data.access)
+                get_profile(data.access)
                 get_users(data.access)
 
                 return {
@@ -46,6 +49,31 @@ export const useLogin=()=>{
         }
     }
     return login
+}
+
+export const useGetProfile=()=>{
+    const dispatch = useDispatch()
+    const get_profile=async(token)=>{
+        const Authorization = `Bearer ${token}`
+        const config = {
+            method:"GET",
+            headers:{
+                "Content-type":"application/json",
+                Authorization
+            }
+        }
+        try{
+            const res = await fetch(`${REST_API_URL}/auth/profile/`, config)
+            if(res.status === 200){
+                const data = await res.json()
+                dispatch(setprofile(data))
+            }
+            return null
+        }catch(err){
+            return null
+        }
+    }
+    return get_profile
 }
 
 
@@ -103,6 +131,7 @@ export const useRequestEmailVerify=()=>{
 export const useTokenRefresh=()=>{
     const dispatch = useDispatch()
     const get_messages = useGetMessages()
+    const get_profile = useGetProfile()
     const get_users = useGetUsers()
 
     const token_refesh=async(refresh)=>{
@@ -123,6 +152,7 @@ export const useTokenRefresh=()=>{
                     dispatch(login_action(payload))
                     get_messages(data.access)
                     get_users(data.access)
+                    get_profile(data.access)
                     return {
                         success:true,
                         data:data

@@ -7,6 +7,7 @@ const initialState = {
     is_authenticated:false,
     email_verified:null,
     email:null,
+    profile:null,
     __auth:null
 }
 
@@ -32,11 +33,16 @@ export const userSlice = createSlice({
             state.middle_name=null
             state.email_verified = null
             state.__auth=null
+            state.profile = null
+        },
+        setprofile:(state, action)=>{
+            console.log(action.payload)
+            state.profile = action.payload
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { login, logout } = userSlice.actions
+export const { login, logout, setprofile } = userSlice.actions
 
 export default userSlice.reducer

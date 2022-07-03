@@ -11,6 +11,7 @@ from rest_framework import permissions
 from .models import Profile
 from .serializers import ProfileSerialzer
 
+
 User = get_user_model()
 
 
@@ -18,7 +19,6 @@ class AuthTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-
         token['first_name'] = user.first_name
         token['last_name'] = user.last_name
         token['middle_name'] = user.middle_name

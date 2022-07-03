@@ -3,8 +3,10 @@ import placeholder_image from "../../assets/images/valley_landscape.png"
 import UserDisplay from "../../components/UserDisplay"
 import Questions from "../../components/Questions"
 import { useNavigate } from "react-router-dom"
+import {useSelector} from 'react-redux'
 
 const Dashboard=()=>{
+    const user = useSelector(state => state.user)
     let profileImage;
     let firstName = "Divine" // import first name here
     let lastName = "Edeh" // import last name here
@@ -33,7 +35,7 @@ const Dashboard=()=>{
         <div>
             <div>
                 <div>
-                    <UserDisplay first_name={firstName} last_name={lastName} id={`@${id}`} bio="I'm a Software Engineer! I code with Javascript, React, Nodejs and express!!" country="Nigeria 🇳🇬" />
+                    <UserDisplay first_name={user.first_name} last_name={user.last_name} id={`@${user.profile?.username}`} bio={user.profile?.about} country={user.profile?.country} />
                 </div>
                 <div>
                     <div className="flex space-x-6 py-4 font-medium">
@@ -51,7 +53,7 @@ const Dashboard=()=>{
                     <div className="mx-7 md:mx-36">
                         <Questions firstName={firstName} id={id} lastName={lastName} profile_image={profileImage || placeholder_image}/>
                         {/* {
-                            tab === 1 ? 
+                            tab === 1 ?
                             <div>
                                 <Questions profile_image={placeholder_image}/>
                             </div>
