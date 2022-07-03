@@ -18,7 +18,7 @@ const Users=()=>{
 
     }
     return (
-        <div className='users'>
+        <div className='users p-5'>
             <h1 className='font-semibold text-lg text-[#001d3d]'>Students</h1>
             <p className='users__smallText text-sm text-gray-500'>Discover friends all over Africa</p>
             <div className='mt-5'>

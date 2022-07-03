@@ -12,7 +12,7 @@ const Chat=()=>{
     }
     console.log(message);
     return(
-        <section className='chat'>
+        <section className='chat p-5'>
             <div className='chat__msgCont relative'>
                 <div className='pb-3 border-b hover:cursor-pointer'>
                     <div className='flex space-x-3'>

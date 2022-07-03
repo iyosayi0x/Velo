@@ -6,7 +6,7 @@ const Feed= () => {
     // get posts
     let posts = [{firstName: "Divine", lastName: "Edeh", id: "divine"}, {firstName: "Divine", lastName: "Edeh", id: "divine"}, {firstName: "Divine", lastName: "Edeh", id: "divine"}]
     return (
-        <div>
+        <div className="p-5 md:p-7">
             <h1 className="py-4 font-semibold text-lg">Questions from students all over Africa...</h1>
             {
                 posts.map(post => {
