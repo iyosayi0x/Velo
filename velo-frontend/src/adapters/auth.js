@@ -63,9 +63,10 @@ export const useSignUp=()=>{
                     data:data
                 }
             }
+            const data = await res.json()
             return {
                 success:false,
-                data:null
+                data:data
             }
         }catch(err){
             return {

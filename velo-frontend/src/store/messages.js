@@ -4,13 +4,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const chatSlice = createSlice({
     name: 'messages',
-    initialState:[],
+    initialState:{
+        all:[]
+    },
     reducers: {
         add_message: (state, action) => {
-            state.push(action.payload)
+            state.all.push(action.payload)
         },
-        remove_message:(state, payload)=>{
-            state.messages = state.messages.filter(message => message.id !== payload.id)
+        remove_message:(state, action)=>{
+            state.all = state.all.filter(message => message.id !== action.payload)
         }
     },
 })
