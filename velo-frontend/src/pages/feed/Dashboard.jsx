@@ -35,7 +35,7 @@ const Dashboard=()=>{
         <div>
             <div>
                 <div>
-                    <UserDisplay first_name={user.first_name} last_name={user.last_name} id={`@${user.profile?.username}`} bio={user.profile?.about} country={user.profile?.country} />
+                    <UserDisplay first_name={user.first_name} last_name={user.last_name} username={`@${user.profile?.username}`} bio={user.profile?.about} country={user.profile?.country} />
                 </div>
                 <div>
                     <div className="flex space-x-6 py-4 font-medium">
