@@ -1,15 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-    messages:[]
-}
+
 
 export const counterSlice = createSlice({
-    name: 'message',
-    initialState,
+    name: 'messages',
+    initialState:[],
     reducers: {
         add_message: (state, payload) => {
-            state.messages = [...state.messages, payloadd]
+            state.push(payload)
         },
         remove_message:(state, payload)=>{
             state.messages = state.messages.filter(message => message.id !== payload.id)

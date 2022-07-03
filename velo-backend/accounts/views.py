@@ -41,14 +41,12 @@ class SignUpView(APIView):
         data = request.data
         first_name = data.get('first_name', None)
         last_name = data.get('last_name', None)
-        middle_name = data.get('last_name', None)
+        middle_name = data.get('last_name', '')
         password = data.get('password', None)
-        course = data.get('course', None)
-        university = data.get('university', None)
         re_password = data.get('password', None)
         email = data.get('email', None)
 
-        if first_name is None or last_name is None or course is None or password is None or re_password is None or email is None:
+        if first_name is None or last_name is None or password is None or re_password is None or email is None:
             context = {
                 "Invalid form data"
             }
@@ -59,8 +57,6 @@ class SignUpView(APIView):
                 "Passwords do not match"
             }
             return Response(context, status=status.HTTP_400_BAD_REQUEST)
-
-        # check if a user with this email already exists
         try:
             User.objects.get(email=email)
             context = {
@@ -68,13 +64,14 @@ class SignUpView(APIView):
                 'description': 'A user with this email already exists'
             }
             return Response(context, status=status.HTTP_400_BAD_REQUEST)
+
         except User.DoesNotExist:
             # if a user does not exist create one
-            user = User.objects.create(first_name=first_name,
+            User.objects.create(first_name=first_name,
                                 last_name=last_name,
                                 middle_name=middle_name,
-                                password=password, email=email)
-            Profile.objects.create(user=user, course=course, university=university)
+                                password=password,
+                                email=email)
             context = {
                 'success': True,
                 'description': 'Account Successfully created , proceed to login'

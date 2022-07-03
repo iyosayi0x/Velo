@@ -3,7 +3,7 @@ import Message from '../components/Message'
 import '../styles/message.css'
 import { useSelector } from 'react-redux'
 const MessagesLayout=()=>{
-    const messages = useSelector(state => state.messages.messages)
+    const messages = useSelector(state => state.messages)
     return (
         <div>
             <Outlet/>

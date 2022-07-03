@@ -41,10 +41,6 @@ export const useLogin=()=>{
     return login
 }
 
-const storeRefesh=(token)=>{
-    localStorage.setItem('__refresh', token)
-}
-
 
 export const useSignUp=()=>{
     const signup=async(formData)=>{
@@ -55,8 +51,6 @@ export const useSignUp=()=>{
             },
             body: JSON.stringify(formData)
         }
-
-        console.log(config)
 
         try{
             const res = await fetch(`${REST_API_URL}/auth/signup/`, config)
@@ -113,6 +107,7 @@ export const useTokenRefresh=()=>{
                 const res = await fetch(`${REST_API_URL}/auth/token/refresh/`, config)
                 if(res.status === 200){
                     const data = await res.json()
+                    storeRefesh(data.refresh)
                     const {first_name, last_name, middle_name, email, email_verified,} = decode_jwt(data.access)
                     const payload = {first_name , last_name , middle_name , email , email_verified}
                     dispatch(login_action(payload))
@@ -168,3 +163,8 @@ export const useRequestPasswordReset=()=>{
     }
     return request_password_reset
 }
+
+const storeRefesh=(token)=>{
+    localStorage.setItem('__refresh', token)
+}
+
