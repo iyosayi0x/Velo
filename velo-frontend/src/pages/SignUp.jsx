@@ -3,8 +3,12 @@ import {Link} from 'react-router-dom'
 import {useState} from 'react'
 import {useSignUp} from '../adapters/auth'
 import {notEmptyString} from '../utils'
+import {useDispatch} from 'react-redux'
+import {add_message} from '../store/messages'
+import {uid} from '../utils'
 
 const SignUp=()=>{
+    const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         email:'',
         first_name:'',
@@ -31,10 +35,19 @@ const SignUp=()=>{
         if(notEmptyString(email) && notEmptyString(first_name) && notEmptyString(last_name) && notEmptyString(password) && notEmptyString(re_password)){
             setIsLoading(true)
             const res = await signup(formData)
+
+
             if(res.success){
+                setIsLoading(false)
+                dispatch(add_message({type:'success', text:res.data?.description, id:uid()}))
                 nav('/')
             }
             setIsLoading(false)
+            if(res.data === null){
+                dispatch(add_message({type:'error', text:'Opps something went wrong, try again', id:uid()}))
+            }else{
+                dispatch(add_message({type:'error', text:res.data?.description, id:uid()}))
+            }
         }
     }
 
@@ -78,7 +91,7 @@ const SignUp=()=>{
                         <input type='password' required={true} name='re_password' value={re_password} onChange={e=>handleFormChange(e)}/>
                     </div>
                     <div>
-                        <button className='auth__btn'>SignUp</button>
+                    <button className={isLoading ? 'auth__btn auth__btn--loading' : 'auth__btn'}>{isLoading ? 'Loading...' : 'Signup'}</button>
                     </div>
                 </form>
                 <p  className='text-sm my-5'>Already have an account? <Link to='/login'>Login</Link></p>

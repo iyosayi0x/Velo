@@ -67,16 +67,26 @@ class SignUpView(APIView):
 
         except User.DoesNotExist:
             # if a user does not exist create one
-            User.objects.create(first_name=first_name,
+            user = User(first_name=first_name,
                                 last_name=last_name,
                                 middle_name=middle_name,
-                                password=password,
                                 email=email)
+            user.set_password(password)
+            user.save()
+
             context = {
                 'success': True,
                 'description': 'Account Successfully created , proceed to login'
             }
             return Response(context, status=status.HTTP_200_OK)
+
+
+class RetriveUsers(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    def get(self , request):
+        queryset = Profile.objects.all()
+        serializer = ProfileSerialzer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class RetriveProfileView(APIView):
     permission_classes = (permissions.IsAuthenticated,)

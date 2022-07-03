@@ -10,6 +10,7 @@
     min-width: 300px;
     border-radius: .3rem;
     margin:.7rem auto;
+    transition: .4s;
 }
 
 .messages__wrapper {

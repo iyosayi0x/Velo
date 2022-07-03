@@ -28,7 +28,6 @@ import NewQuestion from "./components/newQuestion";
 
 const App =()=>{
   const refresh = retrieveRefresh()
-  const get_messages = useGetMessages()
   const is_authenticated = useSelector(state=>state.user.is_authenticated)
   const token_refesh = useTokenRefresh()
 
@@ -38,11 +37,6 @@ const App =()=>{
     }
   },[])
 
-  useEffect(()=>{
-    if(is_authenticated){
-      get_messages()
-    }
-  },[is_authenticated])
 
   return(
     <BrowserRouter>
