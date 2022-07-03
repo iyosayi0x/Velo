@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 import {useRequestPasswordReset} from '../../adapters/auth'
 import Message from '../../components/Message'
+import {notEmptyString} from '../../utils'
 
 const PasswordReset=()=>{
     const [email , setEmail] = useState('')
@@ -18,7 +19,7 @@ const PasswordReset=()=>{
         if(isLoading){
             return
         }
-        if(email.trim() !== ''){
+        if(notEmptyString(email)){
             setIsLoading(true)
             const res = await request_password_reset(email)
             if(res.success){

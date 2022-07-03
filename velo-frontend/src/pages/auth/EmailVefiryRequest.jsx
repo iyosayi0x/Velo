@@ -2,6 +2,7 @@ import secure_svg from '../../assets/ilstrs/secure.svg'
 import {Link, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 import {useRequestEmailVerify} from '../../adapters/auth'
+import {notEmptyString} from '../../utils'
 
 const PasswordReset=()=>{
     const [email , setEmail] = useState('')
@@ -15,7 +16,7 @@ const PasswordReset=()=>{
         if(isLoading){
             return
         }
-        if(email.trim() !==''){
+        if(notEmptyString(email)){
             setIsLoading(true)
             const res = await request_email_verify(email)
             if(res.success){

@@ -1,3 +1,5 @@
+import {REST_API_URL} from './index'
+
 export const useLogin=()=>{
     const login=async(email , password)=>{
         const config= {
@@ -7,9 +9,6 @@ export const useLogin=()=>{
             },
             body: JSON.stringify({email, password})
         }
-
-        console.log(config)
-
         try{
             const res = await fetch(`${REST_API_URL}/auth/token/`, config)
             if(res.status === 200){

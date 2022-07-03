@@ -2,6 +2,7 @@ import secure_svg from '../../assets/ilstrs/secure.svg'
 import {Link, useNavigate, useParams} from 'react-router-dom'
 import {useState} from 'react'
 import Message from '../../components/Message'
+import {notEmptyString} from '../../utils'
 
 const PasswordResetConfirm=()=>{
     const [passwordData, setPasswordData] = useState({
@@ -25,7 +26,7 @@ const PasswordResetConfirm=()=>{
         if(isLoading){
             return
         }
-        if(params.uidb64 && params.token && password.trim() !== '' && re_password.trim() !== ''){
+        if(params.uidb64 && params.token && notEmptyString(password) && notEmptyString(re_password)){
             const res = await confirm_password_reset(params.uidb64 , params.token, passwordData)
             if(res.success){
                 setMessages(currMessages => [...currMessages , <Message type='success' text={<div>Password reset successful <Link to='/login'>Login</Link></div>}/>])

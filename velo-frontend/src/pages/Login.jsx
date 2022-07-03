@@ -2,6 +2,7 @@ import welcome_svg from '../assets/ilstrs/welcome.svg'
 import {Link, useNavigate} from 'react-router-dom'
 import {useLogin} from '../adapters/auth'
 import {useState} from 'react'
+import {notEmptyString} from '../utils'
 
 const Login=()=>{
     const login = useLogin()
@@ -16,7 +17,7 @@ const Login=()=>{
         if(isLoading){
             return
         }
-        if(email.trim() !== '' && password.trim() !==''){
+        if(notEmptyString(email) && notEmptyString(password)){
             setIsLoading(true)
             const res = await login(email, password)
             if(res.success){

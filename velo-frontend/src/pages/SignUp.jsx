@@ -2,6 +2,7 @@ import welcome_svg from '../assets/ilstrs/welcome.svg'
 import {Link} from 'react-router-dom'
 import {useState} from 'react'
 import {useSignUp} from '../adapters/auth'
+import {notEmptyString} from '../utils'
 
 const SignUp=()=>{
     const [formData, setFormData] = useState({

@@ -1,5 +1,2 @@
-const REST_API_URL='http://localhost:8000/api'
+export const REST_API_URL='http://localhost:8000/api'
 
-const notEmptyString=(text)=>{
-    return text.trim() !== ''
-}
