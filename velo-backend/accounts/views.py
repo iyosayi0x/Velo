@@ -78,6 +78,14 @@ class SignUpView(APIView):
             }
             return Response(context, status=status.HTTP_200_OK)
 
+
+class RetriveUsers(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    def get(self , request):
+        queryset = Profile.objects.all()
+        serializer = ProfileSerialzer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class RetriveProfileView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
     def get(self, request):

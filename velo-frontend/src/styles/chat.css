@@ -13,6 +13,7 @@
     border-radius: .7rem;
     outline:none;
     margin:1rem auto;
+    box-shadow: 2px 1px 5px #e1e1e1;
 }
 .chat__chatHeader h1 {
     font-weight: bolder;
