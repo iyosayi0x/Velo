@@ -20,7 +20,7 @@ const Navbar = () => {
                         <Link to='/faq'>FAQ</Link>
                     </li>
                     <li>
-                        <Link to="/feed">Feed</Link>
+                        <Link to="/login">Feed</Link>
                     </li>
                 </ul>
                 <div className='absolute right-10 space-x-4'>

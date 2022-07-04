@@ -87,7 +87,7 @@ const Dashboard=()=>{
             </div>
             <div className="">
                 {
-                    question && <NewQuestion setQuestion={setNewQuestion} />
+                    question && <NewQuestion setShowQuestion={setNewQuestion} />
                 }
             </div>
         </div>

@@ -1,12 +1,12 @@
 import {useState} from 'react'
 import "../styles/question.css"
 
-const NewQuestion = () => {
+const NewQuestion = ({setShowQuestion}) => {
 
     const [question, setQuestion] = useState('')
     const [topics, setTopics] = useState('')
     const remove = () => {
-        setQuestion(false)
+        setShowQuestion(false)
     }
 return (
     <div className=''>
