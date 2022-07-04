@@ -56,7 +56,7 @@ const SignUp=()=>{
     return (
         <div>
         <Navbar/>
-        <main className='px-8 justify-around items-center bg-[#f9f9f9] rounded-md w-[90%] mx-auto my-20 py-10 md:auth__main mb-20'>
+        <main className='px-8 md:flex justify-around items-center bg-[#f9f9f9] rounded-md w-[90%] mx-auto my-20 py-10 md:auth__main mb-20'>
 
             <section className='hidden md:block auth__ilstrWrapper'>
                 <div className='w-3/4'>
