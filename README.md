@@ -1,6 +1,12 @@
 # Velo
 
-A learning community that connects students all over Africa 
+Velo is a(an) interactive app/website that connects not only University students across Africa but specifically course mates
+
+It's usefulness
+
+It helps reduce the stress of going to google to search for questions where you'll find different answers some of which may not be correct/what you're looking
+
+Velo also had the chat features which combines learning with fun
 
 ## Current Functionalities 
 
