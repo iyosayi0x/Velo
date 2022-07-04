@@ -2,9 +2,12 @@ import {useState, useMemo} from 'react'
 import "../styles/question.css"
 import {useCreatePost} from '../adapters/post'
 import {notEmptyString, uid} from '../utils'
+import {add_message} from '../store/messages'
+import {useDispatch} from 'react-redux'
 
 const NewQuestion = ({setShowQuestion}) => {
     const create_post = useCreatePost()
+    const dispatch = useDispatch()
 
     const [question, setQuestion] = useState('')
     const [topics, setTopics] = useState('')
@@ -16,12 +19,15 @@ const NewQuestion = ({setShowQuestion}) => {
     const remove = () => {
         setShowQuestion(false)
     }
-    const setQuestionText=()=>{
 
-    }
-    const uploadQuestion=()=>{
+    const uploadQuestion=async()=>{
         if(notEmptyString(question) ** notEmptyString(topics)){
-            create_post(question, topics)
+            const res = await create_post(question, topics)
+            if(res.success){
+                dispatch(add_message({type:'success', text:'Post created successfully'}))
+            }else{
+                dispatch(add_message({type:'error', text:'Unable to create post'}))
+            }
         }
     }
 return (

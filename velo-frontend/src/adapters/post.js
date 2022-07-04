@@ -1,11 +1,39 @@
 import {REST_API_URL} from './index'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {update_feed, update_posts} from '../store/post'
 
 
 export const useCreatePost=()=>{
-    const create_post=async()=>{
-
+    const token = useSelector(state=>state.user.__auth)
+    const get_posts = useGetPosts()
+    const get_feed = useGetFeed()
+    const create_post=async(text, tags)=>{
+        const Authorization = `Bearer ${token}`
+        const config = {
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+                Authorization
+            },
+            body:JSON.stringify({text,tags})
+        }
+        try{
+            const res = await fetch(`${REST_API_URL}/post/create/`, config)
+            if(res.status === 200){
+                get_posts(token)
+                get_feed(token)
+                return {
+                    success:true
+                }
+            }
+            return {
+                success:false
+            }
+        }catch(err){
+            return {
+                success:false
+            }
+        }
     }
     return create_post
 }
@@ -16,7 +44,10 @@ export const useGetFeed=()=>{
         const Authorization = `Bearer ${token}`
         const config = {
             method:"GET",
-            Authorization
+            headers:{
+                "Content-type":"application/json",
+                Authorization
+            }
         }
         try{
             const res = await fetch(`${REST_API_URL}/post/feed/`, config)
@@ -38,7 +69,10 @@ export const useGetPosts=()=>{
         const Authorization = `Bearer ${token}`
         const config = {
             method:"GET",
-            Authorization
+            headers:{
+                "Content-type":"application/json",
+                Authorization
+            }
         }
         try{
             const res = await fetch(`${REST_API_URL}/post/`, config)

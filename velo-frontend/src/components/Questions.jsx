@@ -1,10 +1,9 @@
 import React from 'react'
 
-const Questions = ({profile_image, firstName, lastName, id}) => {
+const Questions = ({profile_image, firstName, lastName, id, post_text, username}) => {
   let comment = () => {
 
   }
-  let post = "Hey, this is a post! Iyosai, you can get the users post from the db then import it here."
   return (
     <div>
       <div className='bg-[#003566] rounded-3xl px-5 py-3 mb-5'>
@@ -13,11 +12,11 @@ const Questions = ({profile_image, firstName, lastName, id}) => {
             <img className='rounded-full w-14 h-14 md:w-14 md:h-14' src={profile_image} />
             <div className='text-white '>
               <h1 className='font-medium'>{`${firstName} ${lastName}`}</h1>
-              <p className='text-gray-300'>{`@${id}`}</p>
+              <p className='text-gray-300'>{`@${username}`}</p>
             </div>
           </div>
           <div>
-            <p className='text-white'>{post}</p>
+            <p className='text-white'>{post_text}</p>
           </div>
         </div>
         <div className='pt-3'>

@@ -11,7 +11,7 @@ export const postSlice = createSlice({
     initialState:initialState,
     reducers: {
         update_feed:(state, action)=>{
-            state.chats = action.payload
+            state.feed = action.payload
         },
         update_posts:(state, action)=>{
             state.posts = action.payload
