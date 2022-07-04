@@ -1,6 +1,14 @@
 # Velo
 
-We're still unsure whats its about, but lets see how it goes
+A learning community that connects students all over Africa 
+
+## Current Functionalities 
+
+- Ask a question from your dashboard 
+
+- Chat system ( not yet implemented on the frontend ) 
+
+- Feed, get questions ask by people in your feed based on your interests 
 
 ## Velo-frontend
 
@@ -27,7 +35,7 @@ npm run preview
 
 ## Velo-backend
 
-STart up velo backend with
+Start up velo backend with
 
 ```bash
 cd velo-backend
