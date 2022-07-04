@@ -1,40 +1,64 @@
-import React from 'react'
+import {useState, useMemo} from 'react'
 import "../styles/question.css"
+import {useCreatePost} from '../adapters/post'
+import {notEmptyString, uid} from '../utils'
+import {add_message} from '../store/messages'
+import {useDispatch} from 'react-redux'
 
-const NewQuestion = ({setQuestion}) => {
+const NewQuestion = ({setShowQuestion}) => {
+    const create_post = useCreatePost()
+    const dispatch = useDispatch()
+
+    const [question, setQuestion] = useState('')
+    const [topics, setTopics] = useState('')
+
+    const topicsarr = useMemo(()=>{
+        return topics.split(/[ ,]+/);
+    },[topics])
+
     const remove = () => {
-        setQuestion(false)
+        setShowQuestion(false)
     }
-  return (
-    <div className=''>
-    <div className=''>
-        <div className='bg-[#003566] h-[35%] fixed w-full py-10 rounded-t-[80px] md:rounded-3xl md:w-96 px-6 md:left-0 md:right-0 md:top-0 md:m-auto bottom-0 box'>
+
+    const uploadQuestion=async()=>{
+        if(notEmptyString(question) ** notEmptyString(topics)){
+            const res = await create_post(question, topics)
+            if(res.success){
+                dispatch(add_message({type:'success', text:'Post created successfully'}))
+            }else{
+                dispatch(add_message({type:'error', text:'Unable to create post'}))
+            }
+        }
+    }
+return (
+    <div>
+        <div className='bg-[white] h-[50%] fixed w-full py-10 rounded-t-[80px] md:rounded-3xl md:w-96 px-6 md:left-0 md:right-0 md:top-0 md:m-auto bottom-0 box'>
             <div className='pb-5'>
-                <svg onClick={remove} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 hover:cursor-pointer text-white absolute right-10 top-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                <svg onClick={remove} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 hover:cursor-pointer text-white absolute right-10 top-8" fill="#f9f9f9" viewBox="0 0 24 24" stroke="black" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </div>
-            <input className='bg-transparent text-white border-b w-full py-2 outline-none' placeholder='Type a new question...' />
-            <h2 className='text-white font-medium text-lg mt-5'>Topic?</h2>
+            <input type='text' className='bg-transparent border-b w-full py-2 outline-none' placeholder='Type a new question...'  vakue={question} onChange={e=>setQuestion(e.target.value)}/>
+
+
+            <h2 className='font-medium text-sm mt-5'>Topic?</h2>
+            <section className='newquestion__topicsarr'>
+            {
+                topicsarr.map(item => <div key={uid()}>
+                    <div className='newquestion__topic'> {item}</div>
+                </div>)
+            }
+            </section>
+
+
             <div className='flex md:block'>
-                <select className='mt-2 outline-none w-[90%] md:w-full py-1 px-2 hover:cursor-pointer bg-gray-200 rounded ' name="languages" id="lang" placeholder='Select Topic'>
-                    <option value="topic" disabled>Select Topic</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="php">PHP</option>
-                    <option value="java">Java</option>
-                    <option value="golang">Golang</option>
-                    <option value="python">Python</option>
-                    <option value="c#">C#</option>
-                    <option value="C++">C++</option>
-                    <option value="erlang">Erlang</option>
-                </select>
-                <div className='md:mt-6 absolute right-4'>
+            <input type='text' className='bg-transparent border-b w-full py-2 outline-none' placeholder='Set topics...' value={topics} onChange={(e)=>setTopics(e.target.value)}/>
+
+                <div className='md:mt-6 absolute right-4' onClick={uploadQuestion}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-[#003566] rounded-full p-2 rotate-45 bg-gray-200 hover:cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
                 </div>
-
             </div>
         </div>
     </div>
-    </div>
-  )
+)
 }
 
 export default NewQuestion

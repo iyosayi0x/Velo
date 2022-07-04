@@ -16,11 +16,10 @@ class  RetrieveFeedView(APIView):
         user = request.user
         try:
             user_profile = Profile.objects.get(user=user)
-            if user_profile.instrests == None or user_profile.intrests.strip() == '':
+            if user_profile.intrests == None or user_profile.intrests== '':
                 queryset= Post.objects.all()
             else :
-
-                interest_list = user_profile.instrests.split()
+                interest_list = user_profile.intrests.split()
                 lookup = Q()
                 for intrest_item in interest_list:
                     lookup |= Q(tags__icontains=intrest_item)
@@ -29,7 +28,8 @@ class  RetrieveFeedView(APIView):
 
             serializer = PostSerializer(queryset, many=True)
             return Response(serializer.data , status=status.HTTP_200_OK)
-        except:
+        except Exception as E:
+            print(E)
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -62,7 +62,7 @@ class RetrievePosts(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
         query = Post.objects.filter(poster=user_profile)
-        serializer = PostSerializer(Post, many=True)
+        serializer = PostSerializer(query, many=True)
         return Response(serializer.data , status=status.HTTP_200_OK)
 
 

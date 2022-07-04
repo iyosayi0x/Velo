@@ -32,7 +32,7 @@ const Login=()=>{
     return (
         <div>
         <Navbar />
-        <main className='px-9 md:flex justify-around items-center bg-[#f9f9f9] rounded-md w-[90%] mx-auto my-20 py-10 md:auth__main mb-20'>
+        <main className='auth__main'>
             <section className='hidden md:block auth__ilstrWrapper'>
                 <div className='w-3/4'>
                     <img src={welcome_svg} alt='Welcome'/>

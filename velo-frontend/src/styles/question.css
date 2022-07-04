@@ -7,6 +7,19 @@
     backdrop-filter: blur(20px);
 
 }
+
+.newquestion__topicsarr{
+    display: flex;
+    justify-content:flex-start;
+    gap:.9rem;
+    align-items:center;
+    flex-wrap: wrap;
+}
+.newquestion__topic{
+    background:#f9f9f9;
+    padding:.3rem .9rem;
+    border-radius:.8rem;
+}
 @keyframes slide-up {
     from{
         opacity: 0.2;
