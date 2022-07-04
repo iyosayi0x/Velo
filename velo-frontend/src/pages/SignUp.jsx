@@ -6,7 +6,7 @@ import {notEmptyString} from '../utils'
 import {useDispatch} from 'react-redux'
 import {add_message} from '../store/messages'
 import {uid} from '../utils'
-import Navbar from '../components/Navbar' 
+import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 const SignUp=()=>{
@@ -50,13 +50,13 @@ const SignUp=()=>{
             }else{
                 dispatch(add_message({type:'error', text:res.data?.description, id:uid()}))
             }
-        } 
+        }
     }
 
     return (
         <div>
         <Navbar/>
-        <main className='px-8 justify-around items-center bg-[#f9f9f9] rounded-md w-[90%] mx-auto my-20 py-10 md:auth__main mb-20'>
+        <main className='auth__main'>
 
             <section className='hidden md:block auth__ilstrWrapper'>
                 <div className='w-3/4'>
