@@ -73,7 +73,7 @@ ROOT_URLCONF = 'velo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates', BASE_DIR/'build'],
+        'DIRS': [BASE_DIR/'templates', BASE_DIR/'dist'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
