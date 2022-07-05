@@ -1,6 +1,20 @@
 # Velo
 
-We're still unsure whats its about, but lets see how it goes
+Velo is a(an) interactive app/website that connects not only University students across Africa but specifically course mates
+
+It's usefulness
+
+It helps reduce the stress of going to google to search for questions where you'll find different answers some of which may not be correct/what you're looking
+
+Velo also had the chat features which combines learning with fun
+
+## Current Functionalities 
+
+- Ask a question from your dashboard 
+
+- Chat system ( not yet implemented on the frontend ) 
+
+- Feed, get questions ask by people in your feed based on your interests 
 
 ## Velo-frontend
 
@@ -27,7 +41,7 @@ npm run preview
 
 ## Velo-backend
 
-STart up velo backend with
+Start up velo backend with
 
 ```bash
 cd velo-backend

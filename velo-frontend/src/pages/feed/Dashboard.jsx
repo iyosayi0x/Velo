@@ -11,28 +11,12 @@ const Dashboard=()=>{
     const user = useSelector(state => state.user)
     const [question, setNewQuestion] = useState(false)
 
-
     let profileImage;
-    let firstName = "Divine" // import first name here
-    let lastName = "Edeh" // import last name here
-    let id = "divine" // import id i.e username here
 
     const posts = useSelector(state => state.post.posts)
-
     const newQuestionHandler = () => {
         setNewQuestion(true)
     }
-    const details = [
-        {
-            name: "Questions",
-            id: 1
-        },
-        {
-            name: "Answers",
-            id: 2
-        },
-    ]
-
     const handleSubmit=async(e)=>{
         e.preventDefault()
     }
