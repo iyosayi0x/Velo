@@ -14,7 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 import os
 import environ
-
+import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +27,7 @@ environ.Env.read_env(BASE_DIR/'.env')
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o(jd=_jhksq&%k5(zg42wcp19(yi))r#4fb_bp0uwhtw==9$a%'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -124,6 +125,8 @@ CHANNEL_LAYERS = {
     },
 }
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -166,6 +169,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'accounts/templates/static')
+]
+
+
+STATIC_ROOT = BASE_DIR /'staticfiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -180,4 +190,7 @@ MEDIA_ROOTE= BASE_DIR/'media'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5500',
+    'https://velorian.herokuapp.com'
 ]
+
+django_heroku.settings(locals())
