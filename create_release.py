@@ -49,7 +49,7 @@ except:
 
 try:
     print('copying index.html')
-    shutil.copyfile(f'./{rootfrontend_folder}/dist/index.html', './velo/dist/index.html')
+    shutil.copyfile(f'./{rootfrontend_folder}/dist/index.html', './accounts/templates/index.html')
 except:
     pass
 
