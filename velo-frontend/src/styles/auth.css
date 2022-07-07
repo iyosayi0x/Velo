@@ -64,4 +64,7 @@
     .auth__formWrapper{
         flex:1;
     }
+    .auth__main{
+        padding:2rem;
+    }
 }
