@@ -28,7 +28,7 @@ class EmailThread(threading.Thread):
         try:
             self.email.send()
         except Exception as E:
-            print(E)
+            pass
 
 
 def send_activation_mail(user):

@@ -28,8 +28,7 @@ class  RetrieveFeedView(APIView):
 
             serializer = PostSerializer(queryset, many=True)
             return Response(serializer.data , status=status.HTTP_200_OK)
-        except Exception as E:
-            print(E)
+        except:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 

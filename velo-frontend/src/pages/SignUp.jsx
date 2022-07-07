@@ -39,12 +39,13 @@ const SignUp=()=>{
             setIsLoading(true)
             const res = await signup(formData)
 
-
             if(res.success){
                 setIsLoading(false)
                 dispatch(add_message({type:'success', text:res.data?.description, id:uid()}))
-                nav('/')
+                setIsLoading(false)
+                return
             }
+
             setIsLoading(false)
             if(res.data === null){
                 dispatch(add_message({type:'error', text:'Opps something went wrong, try again', id:uid()}))

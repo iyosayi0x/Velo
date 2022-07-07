@@ -43,20 +43,23 @@ class SignUpView(APIView):
         last_name = data.get('last_name', None)
         middle_name = data.get('last_name', '')
         password = data.get('password', None)
-        re_password = data.get('password', None)
+        re_password = data.get('re_password', None)
         email = data.get('email', None)
 
         if first_name is None or last_name is None or password is None or re_password is None or email is None:
             context = {
-                "Invalid form data"
+                'success': False,
+                'description': 'Invalid form data'
             }
             return Response(context, status=status.HTTP_400_BAD_REQUEST)
 
         if password != re_password:
             context = {
-                "Passwords do not match"
+                'success': False,
+                'description': 'Passwords do not match'
             }
             return Response(context, status=status.HTTP_400_BAD_REQUEST)
+
         try:
             User.objects.get(email=email)
             context = {
