@@ -17,9 +17,6 @@ const Dashboard=()=>{
     const newQuestionHandler = () => {
         setNewQuestion(true)
     }
-    const handleSubmit=async(e)=>{
-        e.preventDefault()
-    }
 
     return (
         <div>

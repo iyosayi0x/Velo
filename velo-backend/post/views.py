@@ -24,7 +24,7 @@ class  RetrieveFeedView(APIView):
                 for intrest_item in interest_list:
                     lookup |= Q(tags__icontains=intrest_item)
 
-                queryset = Post.objects.filter(lookup)
+                queryset = Post.objects.filter(lookup).order_by('date_posted')
 
             serializer = PostSerializer(queryset, many=True)
             return Response(serializer.data , status=status.HTTP_200_OK)
@@ -61,7 +61,7 @@ class RetrievePosts(APIView):
         except Profile.DoesNotExist:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        query = Post.objects.filter(poster=user_profile)
+        query = Post.objects.filter(poster=user_profile).order_by('-date_posted')
         serializer = PostSerializer(query, many=True)
         return Response(serializer.data , status=status.HTTP_200_OK)
 
