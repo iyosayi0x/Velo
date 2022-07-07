@@ -10,6 +10,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/chat/', include('chat.urls')),
     path('api/post/', include('post.urls')),
+    path('api/lessons/', include('lesson.urls')),
 ]
 
 if settings.DEBUG:
