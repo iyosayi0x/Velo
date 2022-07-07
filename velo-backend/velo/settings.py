@@ -32,7 +32,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://velorian.herokuapp.com',
+    'http://velorian.herokuapp.com',
+]
 
 
 # Application definition
@@ -190,8 +193,8 @@ MEDIA_ROOTE= BASE_DIR/'media'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'http://localhost:5500',
-    'https://velorian.herokuapp.com'
+    'https://velorian.herokuapp.com',
+    'http://velorian.herokuapp.com',
 ]
 
 django_heroku.settings(locals())

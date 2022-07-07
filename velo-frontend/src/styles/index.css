@@ -39,3 +39,9 @@ a {
     max-height: 100%;
     overflow-y:auto;
 }
+
+.logout_btn {
+    color:#003566;
+    font-weight: bolder;
+    cursor: pointer;
+}
