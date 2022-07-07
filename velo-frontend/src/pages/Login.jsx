@@ -5,12 +5,17 @@ import {useState} from 'react'
 import {notEmptyString} from '../utils'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import '../styles/auth.css'
+import {add_message} from '../store/messages'
+import {useDispatch} from 'react-redux'
+import {uid} from '../utils'
 
 const Login=()=>{
     const login = useLogin()
     const [email , setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isLoading, setIsLoading]= useState(false)
+    const dispatch = useDispatch()
 
     const nav = useNavigate()
 
@@ -24,6 +29,8 @@ const Login=()=>{
             const res = await login(email, password)
             if(res.success){
                 nav('/feed')
+            }else{
+                dispatch(add_message({type:'error', text:'Login failed, incorrect username or password', id:uid()}))
             }
             setIsLoading(false)
         }

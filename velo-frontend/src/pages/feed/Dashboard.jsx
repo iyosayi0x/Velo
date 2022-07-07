@@ -33,7 +33,7 @@ const Dashboard=()=>{
                     </div>
                     <div className="mx-0 md:mx-36">
                     {
-                        posts.map(post => <Questions firstName={post.poster.user.first_name}  key={post.id} id={id} username={post.poster.username} lastName={post.poster.user.last_name} profile_image={profileImage || placeholder_image} post_text={post.post_text}/>)
+                        posts.map(post => <Questions firstName={post.poster.user.first_name}  key={post.id} id={post.id} username={post.poster.username} lastName={post.poster.user.last_name} profile_image={profileImage || placeholder_image} post_text={post.post_text}/>)
                     }
                     </div>
                 </div>

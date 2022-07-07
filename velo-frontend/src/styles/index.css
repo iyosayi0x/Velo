@@ -28,59 +28,6 @@ p{
 img {
     border-radius: 10px;
 }
-.auth__main{
-    padding:4rem;
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    background:#f9f9f9;
-    width:80%;
-    border-radius:.7rem;
-    margin: 2.5rem auto;
-}
-
-.auth__form label{
-    font-size:.7rem;
-    font-weight: bold;
-}
-
-.auth__form input{
-    width: 100%;
-    outline: none;
-    padding:.5rem .8rem;
-    outline:none;
-    border:none;
-    border-radius: .4rem;
-}
-
-.auth__ilstrWrapper{
-    flex:.8;
-}
-
-.auth__formWrapper{
-    flex:.5;
-
-    width: 100%;
-}
-
-.auth__btn{
-    border:none;
-    outline:none;
-    background:#003566;
-    width:100%;
-    color:white;
-    padding:.7rem .8rem;
-    border-radius:.4rem;
-}
-.auth__btn--loading{
-    background:rgba(#003566,.5);
-}
-.auth__customNameField{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap:2rem;
-}
 
 a {
     text-decoration: none;

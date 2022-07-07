@@ -8,6 +8,7 @@ import {add_message} from '../store/messages'
 import {uid} from '../utils'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import '../styles/auth.css'
 
 const SignUp=()=>{
     const dispatch = useDispatch()
