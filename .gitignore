@@ -1,5 +1,3 @@
-*.env
-db.sqlite3
-
 velo-backend/db.sqlite3
-staticfiles
+
+velo-backend/.env
