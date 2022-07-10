@@ -4,3 +4,5 @@ db.sqlite3*
 *.env
 *staticfiles*
 velo-backend/.env
+/velo-backend
+/velo-frontend
