@@ -1,6 +1,6 @@
 import {useDispatch} from 'react-redux'
 import {update_messages} from '../store/chat'
-import {REST_API_URL} from './index'
+import {REST_API_URL} from './global'
 
 export const useGetMessages=()=>{
     const dispatch = useDispatch()

@@ -1,4 +1,4 @@
-import {REST_API_URL} from './index'
+import {REST_API_URL} from './global'
 import {useDispatch, useSelector} from 'react-redux'
 import {update_feed, update_posts} from '../store/post'
 

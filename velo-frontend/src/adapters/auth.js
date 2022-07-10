@@ -1,8 +1,7 @@
-import {REST_API_URL} from './index'
+import {REST_API_URL} from './global'
 import {decode_jwt} from '../utils'
 import { useDispatch } from 'react-redux'
 import { login as login_action, setprofile } from '../store/user'
-import {useGetMessages} from './chat'
 import { useLoadUserData } from './users'
 
 

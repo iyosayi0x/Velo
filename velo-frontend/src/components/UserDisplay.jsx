@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const UserDisplay=({profile_image , first_name, last_name , id , bio, callback, username, country })=>{
     return (
-        <div onClick={()=>callback(id)} className='grid grid-cols-6 md:grid-cols-5 gap-4 md:gap-8 py-5 border-b'>
+        <div className='grid grid-cols-6 md:grid-cols-5 gap-4 md:gap-8 py-5 border-b'>
             <div className='col-span-1'>
                 <img className="rounded-full h-16 w-16 md:h-40 md:w-40" src={profile_image || placeholder_image} alt={first_name}/>
             </div>
